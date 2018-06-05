@@ -1,0 +1,70 @@
+body{
+	font-family: Arial;
+	padding: 0;
+	margin: 0;
+}
+
+header{
+	width: 100%;
+	height: 100px;
+	background-color: aquamarine;
+}
+.container{
+	max-width: 1280px;
+    width: 100%;
+    height: 100px;
+	margin: 0 auto;
+    padding: 0px 15px;
+    box-sizing: border-box;
+}
+.logo{
+    padding: 20px 20px 20px 0 ;
+    float: left;
+}
+.findblock{
+    width: 500px;
+    float: left;
+    margin: 20px;
+    padding: 20px 0px 20px 0 ;
+
+}
+.inputsearch{
+    width: 400px;
+}
+
+.tg {
+    border-collapse: collapse;
+    border-spacing: 0;
+    border-color: #ccc;
+}
+
+.tg td {
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    padding: 10px 5px;
+    border-style: solid;
+    border-width: 1px;
+    overflow: hidden;
+    word-break: normal;
+    border-color: #ccc;
+    color: #333;
+    background-color: #fff;
+}
+
+.tg th {
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    font-weight: normal;
+    padding: 10px 5px;
+    border-style: solid;
+    border-width: 1px;
+    overflow: hidden;
+    word-break: normal;
+    border-color: #ccc;
+    color: #333;
+    background-color: #f0f0f0;
+}
+
+.tg .tg-4eph {
+    background-color: #f9f9f9
+}
