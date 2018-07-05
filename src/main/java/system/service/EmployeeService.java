@@ -13,4 +13,5 @@ public interface EmployeeService {
     void save(Employee employee);
 
     Employee findByLogin(String login);
+    public Long getEmployeeID(Employee employee);
 }

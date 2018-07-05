@@ -27,22 +27,16 @@
 <header>
     <div class="container">
         <img src="/resources/img/logo1.png" alt="searchjob" class="logo">
-        <div class="findblock">
-            <span class="icon"><i class="fa fa-search"></i></span>
-            <input class="inputsearch" type="search" id="search" placeholder="Search..." />
-            <select class="selectType">
-            </select>
-        </div>
     </div>
 </header>
 <div class="container">
 
-    <form method="POST" action="${contextPath}/employee_login" class="form-signin">
+    <form method="POST" action="${contextPath}/login" class="form-signin">
         <h2 class="form-heading">Log in</h2>
 
         <div class="form-group ${error != null ? 'has-error' : ''}">
             <span>${message}</span>
-            <input name="user_login" type="text" class="form-control" placeholder="Login"
+            <input name="login" type="text" class="form-control" placeholder="Login"
                    autofocus="true"/>
             <input name="password" type="password" class="form-control" placeholder="Password"/>
             <span>${error}</span>

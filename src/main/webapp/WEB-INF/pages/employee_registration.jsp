@@ -28,12 +28,6 @@
 <header>
     <div class="container">
         <img src="/resources/img/logo1.png" alt="searchjob" class="logo">
-        <div class="findblock">
-            <span class="icon"><i class="fa fa-search"></i></span>
-            <input class="inputsearch" type="search" id="search" placeholder="Search..." />
-            <select class="selectType">
-            </select>
-        </div>
     </div>
 </header>
 <div class="container">

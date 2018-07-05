@@ -1,4 +1,6 @@
-package system.model;
+package temp;
+
+import system.model.Role;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -11,11 +13,11 @@ import java.util.Set;
  */
 
 @Entity
-@Table(name = "employee", schema = "searchjob")
-public class Employee {
+@Table(name = "employer", schema = "searchjob")
+public class Employer {
 
     @Id
-    @Column(name = "ID_employee")
+    @Column(name = "ID_employer")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
@@ -25,11 +27,8 @@ public class Employee {
     @Column(name = "Password")
     private String password;
 
-    @Column(name = "First_Name")
-    private String firstName;
-
-    @Column(name = "Second_Name")
-    private String secondName;
+    @Column(name = "Name")
+    private String nameEmployer;
 
     @Column(name = "Email")
     private String email;
@@ -41,22 +40,9 @@ public class Employee {
     private String confirmPassword;
 
     @ManyToMany
-    @JoinTable(name = "employee_roles", joinColumns = @JoinColumn(name = "user_id"),
+    @JoinTable(name = "employer_roles", joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles;
-
-    @ManyToMany
-    @JoinTable(name = "employee_resumes", joinColumns = @JoinColumn(name = "employee_id"),
-            inverseJoinColumns = @JoinColumn(name = "resume_id"))
-    private Set<Role> resumes;
-
-    public Set<Role> getResumes() {
-        return resumes;
-    }
-
-    public void setResumes(Set<Role> resumes) {
-        this.resumes = resumes;
-    }
 
     public Long getId() {
         return id;
@@ -80,22 +66,6 @@ public class Employee {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getSecondName() {
-        return secondName;
-    }
-
-    public void setSecondName(String secondName) {
-        this.secondName = secondName;
     }
 
     public String getEmail() {
@@ -130,16 +100,25 @@ public class Employee {
         this.roles = roles;
     }
 
+    public String getNameEmployer() {
+        return nameEmployer;
+    }
+
+    public void setNameEmployer(String nameEmployer) {
+        this.nameEmployer = nameEmployer;
+    }
+
     @Override
     public String toString() {
-        return "Employee{" +
+        return "Employer{" +
                 "id=" + id +
                 ", login='" + login + '\'' +
                 ", password='" + password + '\'' +
-                ", firstName='" + firstName + '\'' +
-                ", secondName='" + secondName + '\'' +
+                ", nameEmployer='" + nameEmployer + '\'' +
                 ", email='" + email + '\'' +
                 ", phone='" + phone + '\'' +
+                ", confirmPassword='" + confirmPassword + '\'' +
+                ", roles=" + roles +
                 '}';
     }
 }

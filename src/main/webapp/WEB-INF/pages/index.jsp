@@ -21,10 +21,10 @@
   </header>
   <section class="center">
     <div class="resume">
-      <a href="/employee_login"><button class="button">Post a CV</button></a>
+      <a href="/login"><button class="button">Post a CV</button></a>
     </div>
     <div class="vacancy">
-      <a href="/employer_login"><button class="button">Post a vacancy</button></a>
+      <a href="/login"><button class="button">Post a vacancy</button></a>
     </div>
   </section>
 

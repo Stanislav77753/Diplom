@@ -49,22 +49,22 @@ public class EmployeeValidator implements Validator  {
         }
 
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "firstName", "Required");
-        if (employee.getLogin().length() < 1 || employee.getLogin().length() > 32) {
+        if (employee.getFirstName().length() < 1 || employee.getFirstName().length() > 32) {
             errors.rejectValue("firstName", "Size.employeeForm.firstName");
         }
 
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "secondName", "Required");
-        if (employee.getLogin().length() < 1 || employee.getLogin().length() > 32) {
+        if (employee.getSecondName().length() < 1 || employee.getSecondName().length() > 32) {
             errors.rejectValue("secondName", "Size.employeeForm.secondName");
         }
 
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "email", "Required");
-        if (employee.getLogin().length() < 1 || employee.getLogin().length() > 32) {
+        if (employee.getEmail().length() < 1 || employee.getEmail().length() > 32) {
             errors.rejectValue("email", "Size.employeeForm.email");
         }
 
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "phone", "Required");
-        if (employee.getLogin().length() < 1 || employee.getLogin().length() > 32) {
+        if (employee.getPhone().length() < 1 || employee.getPhone().length() > 32) {
             errors.rejectValue("phone", "Size.employeeForm.phone");
         }
     }

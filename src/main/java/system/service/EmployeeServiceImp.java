@@ -29,7 +29,10 @@ public class EmployeeServiceImp implements EmployeeService {
     @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
-
+    @Override
+    public Long getEmployeeID(Employee employee){
+        return employee.getId();
+    }
     @Override
     public void save(Employee employee) {
         employee.setPassword(bCryptPasswordEncoder.encode(employee.getPassword()));

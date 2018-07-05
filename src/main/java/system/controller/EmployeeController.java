@@ -1,6 +1,11 @@
 package system.controller;
 
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.web.servlet.ModelAndView;
 import system.model.Employee;
+import system.model.Resume;
+import system.service.ResumeService;
 import system.service.SecurityService;
 import system.service.EmployeeService;
 import system.validator.EmployeeValidator;
@@ -25,6 +30,8 @@ public class EmployeeController {
     @Autowired
     private EmployeeService employeeService;
 
+    private ResumeService resumeService;
+
     @Autowired
     private SecurityService securityService;
 
@@ -36,20 +43,7 @@ public class EmployeeController {
         return "index";
     }
 
-    @RequestMapping(value = "/employee_login", method = RequestMethod.GET)
-    public String userLogin(Model model, String error, String logout) {
-        if (error != null) {
-            model.addAttribute("error", "Login or password is incorrect.");
-        }
-
-        if (logout != null) {
-            model.addAttribute("message", "Logged out successfully.");
-        }
-
-        return "employee_login";
-    }
-
-    @RequestMapping(value = "/employee_registration", method = RequestMethod.GET)
+        @RequestMapping(value = "/employee_registration", method = RequestMethod.GET)
     public String userRegistration(Model model) {
         model.addAttribute("employeeForm", new Employee());
 
@@ -81,13 +75,51 @@ public class EmployeeController {
             model.addAttribute("message", "Logged out successfully.");
         }
 
-        return "login";
+        return "employee_login";
     }
 
-    @RequestMapping(value = {"/welcome"}, method = RequestMethod.GET)
+
+    @RequestMapping(value = "/welcome", method = RequestMethod.GET)
     public String welcome(Model model) {
-        return "welcome";
+        return "employee_login_result";
     }
+
+    @RequestMapping(value = "/create_resume", method = RequestMethod.GET)
+    public String createResume(Model model) {
+        model.addAttribute("resumeForm", new Resume());
+        return "create_resume";
+    }
+
+/*    @RequestMapping(value = "/create_resume", method = RequestMethod.POST)
+    public String createResume(@ModelAttribute("resumeForm") Resume resumeForm, BindingResult bindingResult,
+                               @AuthenticationPrincipal UserDetails userDetails) {
+       *//* employeeValidator.validate(resumeForm, bindingResult);
+
+        if (bindingResult.hasErrors()) {
+            return "create_resume";
+        }*//*
+        System.out.println("---------------------------");
+       Employee employee = employeeService.findByLogin(userDetails.getUsername());
+        resumeForm.setEmployeeId(employee.getId());
+        System.out.println(employee.getId());
+        resumeService.save(resumeForm);
+
+        return "redirect:/employee_login_result";
+    }*/
+    @RequestMapping(value = "/create_resume", method = RequestMethod.POST)
+    public ModelAndView createResume(@ModelAttribute("resumeForm") Resume resumeForm,
+                                     @AuthenticationPrincipal UserDetails userDetails) {
+        ModelAndView modelAndView = new ModelAndView();
+
+        System.out.println("---------------------------");
+        Employee employee = employeeService.findByLogin(userDetails.getUsername());
+        resumeForm.setEmployeeId(employee.getId());
+        System.out.println(employee.getId());
+        resumeService.save(resumeForm);
+        modelAndView.setViewName("employee_login_result");
+        return modelAndView;
+    }
+
 
     @RequestMapping(value = "/admin", method = RequestMethod.GET)
     public String admin(Model model) {
